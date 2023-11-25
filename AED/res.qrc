@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/res">
+        <file alias="light">tex/green.png</file>
+        <file alias="bkg">tex/loop.png</file>
+    </qresource>
+</RCC>
