@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "aed.h"
+#include "patient.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -12,10 +14,21 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, patient *newPatients = nullptr);
     ~MainWindow();
+    void setPatients(patient *newPatients);
+    void setAED(aed *newAED);
+    void updateShocks();
 
 private:
     Ui::MainWindow *ui;
+    patient *listOfPatients;
+    aed *AED;
+
+private slots:
+    void updatePatient(int newPatient);
+    void updatePower(bool newPower);
+    void updateCPR(bool newCPR);
+    void updatePads(int newPads);
 };
 #endif // MAINWINDOW_H
