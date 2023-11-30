@@ -7,7 +7,7 @@
 int main(int argc, char *argv[])
 {
     int numPatients = 4;
-    aed *newAed = new aed;
+    aed *newAed = new aed();
     patient *newListOfPatients = new patient[numPatients];
 
     QApplication a(argc, argv);

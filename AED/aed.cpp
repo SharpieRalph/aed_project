@@ -1,6 +1,7 @@
 #include "aed.h"
 
-aed::aed()
+aed::aed(QObject *parent)
+    : QObject{parent}
 {
     hasPower = false;
     hasPatient = false;
@@ -10,6 +11,7 @@ aed::aed()
     numShocks = 0;
     statusECG = 0;
     currPatient = nullptr;
+    isOK = true;
 }
 
 void aed::setPatient(patient *newPatient)
@@ -35,6 +37,11 @@ void aed::updateShocks()
 void aed::setPower(bool newPower)
 {
    hasPower = newPower;
+
+   //If AED is turning on then start running aed program
+   if (hasPower){
+       beginProc();
+   }
 }
 
 bool aed::getPower()
@@ -60,4 +67,19 @@ void aed::setPad(bool newPads)
 bool aed::getPad()
 {
     return correctPadPlacement;
+}
+
+bool aed::getOK()
+{
+    return isOK;
+}
+
+void aed::setOK(bool newOK)
+{
+    isOK = newOK;
+}
+
+void aed::beginProc()
+{
+    //Flesh this out
 }

@@ -63,12 +63,12 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#57e389;&quot;&gt;OK&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#5e5c64;&quot;&gt;OFF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="light1">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -112,7 +112,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QLabel" name="light2">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -134,7 +134,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QLabel" name="light3">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -156,7 +156,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QLabel" name="light4">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -178,7 +178,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QLabel" name="light5">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -198,9 +198,9 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="light6">
+   <widget class="QLabel" name="light0">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -410,7 +410,7 @@ p, li { white-space: pre-wrap; }
    <zorder>light3</zorder>
    <zorder>light4</zorder>
    <zorder>light5</zorder>
-   <zorder>light6</zorder>
+   <zorder>light0</zorder>
    <zorder>LCD_text</zorder>
    <zorder>shocksLabel</zorder>
    <zorder>shockCounter</zorder>

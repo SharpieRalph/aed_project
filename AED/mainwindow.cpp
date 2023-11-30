@@ -15,6 +15,10 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     connect(ui->buttonGroup, SIGNAL(idClicked(int)), this, SLOT (updatePads(int)));
     ui->buttonGroup->setId(ui->padsGood, 0);
     ui->buttonGroup->setId(ui->padsBad, 1);
+
+    //Connecting light signals/slots
+    connect(AED, SIGNAL(lightOn(int)), this, SLOT (lightOn(int)));
+    connect(AED, SIGNAL(lightOff(int)), this, SLOT (lightOff(int)));
 }
 
 MainWindow::~MainWindow()
@@ -53,6 +57,28 @@ void MainWindow::updateShocks()
     ui->shockCounter->setText(newShocks);
 }
 
+//Turns NOK Indicator on and sets it to correct option
+void MainWindow::nokOn()
+{
+    bool working = AED->getOK();
+
+    if (working){
+        ui->NOKindicator->setTextColor("#72f542");
+        ui->NOKindicator->setText("OK");
+
+    }else {
+        ui->NOKindicator->setTextColor("#f71919");
+        ui->NOKindicator->setText("NOT OK");
+    }
+}
+
+//Returns NOK Indicator to OFF
+void MainWindow::nokOff()
+{
+    ui->NOKindicator->setTextColor("#3d3d3d");
+    ui->NOKindicator->setText("OFF");
+}
+
 //Receives signial from ui and updates mainwindow accordingly
 void MainWindow::updatePatient(int newPatient)
 {
@@ -64,9 +90,11 @@ void MainWindow::updatePower(bool newPower)
 {
     if(newPower){
         AED->setPower(true);
+        nokOn();
 //        qInfo("%d", AED->getPower());
     } else {
         AED->setPower(false);
+        nokOff();
 //        qInfo("%d", AED->getPower());
     }
 }
@@ -94,4 +122,59 @@ void MainWindow::updatePads(int newPads)
     }
 }
 
+void MainWindow::lightOn(int lightNum)
+{
+    bool pwr = true;
+    switch (lightNum){
+        case 0:
+            ui->light0->setEnabled(pwr);
+            break;
+        case 1:
+            ui->light1->setEnabled(pwr);
+            break;
+        case 2:
+            ui->light2->setEnabled(pwr);
+            break;
+        case 3:
+            ui->light3->setEnabled(pwr);
+            break;
+        case 4:
+            ui->light4->setEnabled(pwr);
+            break;
+        case 5:
+            ui->light5->setEnabled(pwr);
+            break;
+        default:
+            qInfo("Invalid Light Arguement to MAINWINDOW::LIGHTON : %d", lightNum);
+
+    }
+}
+
+void MainWindow::lightOff(int lightNum)
+{
+    bool pwr = false;
+    switch (lightNum){
+        case 0:
+            ui->light0->setEnabled(pwr);
+            break;
+        case 1:
+            ui->light1->setEnabled(pwr);
+            break;
+        case 2:
+            ui->light2->setEnabled(pwr);
+            break;
+        case 3:
+            ui->light3->setEnabled(pwr);
+            break;
+        case 4:
+            ui->light4->setEnabled(pwr);
+            break;
+        case 5:
+            ui->light5->setEnabled(pwr);
+            break;
+        default:
+            qInfo("Invalid Light Arguement to MAINWINDOW::LIGHTOFF : %d", lightNum);
+
+    }
+}
 

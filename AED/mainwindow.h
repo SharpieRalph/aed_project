@@ -24,11 +24,15 @@ private:
     Ui::MainWindow *ui;
     patient *listOfPatients;
     aed *AED;
+    void nokOn();
+    void nokOff();
 
 private slots:
     void updatePatient(int newPatient);
     void updatePower(bool newPower);
     void updateCPR(bool newCPR);
     void updatePads(int newPads);
+    void lightOn(int lightNum);
+    void lightOff(int lightNum);
 };
 #endif // MAINWINDOW_H
