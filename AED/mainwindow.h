@@ -5,6 +5,8 @@
 #include "aed.h"
 #include "patient.h"
 
+#define TOTAL_PATIENTS 4
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -16,9 +18,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr, patient *newPatients = nullptr);
     ~MainWindow();
-    void setPatients(patient *newPatients);
+
     void setAED(aed *newAED);
+
     void updateShocks();
+    void configurePatients();
 
 private:
     Ui::MainWindow *ui;

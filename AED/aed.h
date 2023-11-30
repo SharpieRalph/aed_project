@@ -10,22 +10,27 @@ class aed : public QObject
 
 public:
     explicit aed(QObject *parent = nullptr); //init aed
-    void setPatient(patient *newPatient);
+
     patient *getPatient();
     int getShocks();
-    void updateShocks();
-    void setPower(bool newPower);
     bool getPower();
-    void setCPR(bool newCPR);
     bool getCPR();
-    void setPad(bool newPads);
     bool getPad();
     bool getOK();
+
+    void setPatient(patient *newPatient);
+    void setPower(bool newPower);
+    void setCPR(bool newCPR);
+    void setPad(bool newPads);
     void setOK(bool);
 
-    void beginProc(); //Begins running AED procedure
+    void updateShocks();
+    void delay(int);
+    void POSelfTest();
+    void beginProc(int); //Begins running AED procedure
 
 signals:
+
     void lightOn(int lightNum);
     void lightOff(int lightNum);
 

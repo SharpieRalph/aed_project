@@ -32,4 +32,5 @@ RESOURCES += \
 
 DISTFILES += \
     tex/green.png \
-    tex/loop.png
+    tex/loop.png \
+    tex/green2.png

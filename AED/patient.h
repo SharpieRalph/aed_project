@@ -12,9 +12,13 @@ class patient
 public:
     patient(); //init patient
     ~patient(); //delete patient
+
     int getPid();
+    int getHeartRate();
+    void setHeartRate(int);
+
 private:
-    int status; //patient heart rhythm status, note this may not be needed as pid might function as both status and id
+    int heartRate; //patient heart rhythm status, note this may not be needed as pid might function as both status and id
     int pid; //patient id
     int patientType; //patient child or adult
     static int nextPid; //used to set patient id for each created patient object

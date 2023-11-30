@@ -1,11 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow), listOfPatients(newPatients)
 {
     ui->setupUi(this);
+
+    AED = new aed();    // Initializes AED
+    listOfPatients = new patient[TOTAL_PATIENTS];   // Initializes listOfPatients
+
 //    //Shows that null ptr was set
 //    qInfo("%p",listOfPatients);
 //    qInfo("%p",AED);
@@ -19,34 +24,27 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     //Connecting light signals/slots
     connect(AED, SIGNAL(lightOn(int)), this, SLOT (lightOn(int)));
     connect(AED, SIGNAL(lightOff(int)), this, SLOT (lightOff(int)));
+
+
 }
 
 MainWindow::~MainWindow()
 {
+    delete AED;
     delete ui;
 }
 
 //Takes the list of patients from main and puts it into mainwindows patients list
-void MainWindow::setPatients(patient *newPatients)
+void MainWindow::configurePatients()
 {
-    listOfPatients = newPatients;
-//    //Tests that patients were sent to mainwindow
-//    qInfo("%i", listOfPatients[0].getPid());
-//    qInfo("%i", listOfPatients[2].getPid());
-//    qInfo("%i", listOfPatients[1].getPid());
-//    qInfo("%i", listOfPatients[3].getPid());
-}
+    listOfPatients[0].setHeartRate(80);
+    listOfPatients[1].setHeartRate(350);
+    listOfPatients[2].setHeartRate(150);
+    listOfPatients[3].setHeartRate(0);
 
-//Takes the AED from man and sets it as mainwindow's AED
-void MainWindow::setAED(aed *newAED)
-{
-    AED = newAED;
-//    //Check that this works
-//    AED->setPatient(&listOfPatients[2]);
-//    qInfo("%i", AED->getPatient()->getPid());
-//    //checkUpdateShocks()
-//    updateShocks();
-
+//    for(int i = 0; i < TOTAL_PATIENTS; i++) {
+//        qInfo("%d", listOfPatients[i].getHeartRate());
+//    }
 }
 
 //Updates number of shocks in AED and on the ui by 1.
@@ -60,9 +58,8 @@ void MainWindow::updateShocks()
 //Turns NOK Indicator on and sets it to correct option
 void MainWindow::nokOn()
 {
-    bool working = AED->getOK();
 
-    if (working){
+    if (AED->getOK()){
         ui->NOKindicator->setTextColor("#72f542");
         ui->NOKindicator->setText("OK");
 
@@ -82,32 +79,42 @@ void MainWindow::nokOff()
 //Receives signial from ui and updates mainwindow accordingly
 void MainWindow::updatePatient(int newPatient)
 {
-//    qInfo("ComboBox sent: %i", newPatient);
+    //qInfo("ComboBox sent: %i", newPatient);
     AED->setPatient(&listOfPatients[newPatient]);
 }
 
 void MainWindow::updatePower(bool newPower)
 {
+
+    // Power on, AED functionality begins
     if(newPower){
+        int stage = 0;  // Initial stage sent to "beingProc()"
         AED->setPower(true);
         nokOn();
-//        qInfo("%d", AED->getPower());
+        while(AED->getPower()) {
+            if(stage != 0) {
+                lightOff(stage-1);
+                lightOn(stage);
+            }
+            AED->beginProc(stage);
+            if(stage == 5) {
+                lightOff(stage);
+                stage--;
+            } else {
+                stage++;
+            }
+
+        }
+    // Power off
     } else {
         AED->setPower(false);
         nokOff();
-//        qInfo("%d", AED->getPower());
     }
 }
 
 void MainWindow::updateCPR(bool newCPR)
 {
-    if(newCPR){
-        AED->setCPR(true);
-//        qInfo("%d", AED->getCPR());
-    } else {
-        AED->setCPR(false);
-//        qInfo("%d", AED->getCPR());
-    }
+    AED->setCPR(newCPR);
 }
 
 void MainWindow::updatePads(int newPads)
@@ -124,25 +131,25 @@ void MainWindow::updatePads(int newPads)
 
 void MainWindow::lightOn(int lightNum)
 {
-    bool pwr = true;
+
     switch (lightNum){
         case 0:
-            ui->light0->setEnabled(pwr);
+            ui->light0->setEnabled(true);
             break;
         case 1:
-            ui->light1->setEnabled(pwr);
+            ui->light1->setEnabled(true);
             break;
         case 2:
-            ui->light2->setEnabled(pwr);
+            ui->light2->setEnabled(true);
             break;
         case 3:
-            ui->light3->setEnabled(pwr);
+            ui->light3->setEnabled(true);
             break;
         case 4:
-            ui->light4->setEnabled(pwr);
+            ui->light4->setEnabled(true);
             break;
         case 5:
-            ui->light5->setEnabled(pwr);
+            ui->light5->setEnabled(true);
             break;
         default:
             qInfo("Invalid Light Arguement to MAINWINDOW::LIGHTON : %d", lightNum);
@@ -152,25 +159,24 @@ void MainWindow::lightOn(int lightNum)
 
 void MainWindow::lightOff(int lightNum)
 {
-    bool pwr = false;
     switch (lightNum){
         case 0:
-            ui->light0->setEnabled(pwr);
+            ui->light0->setEnabled(false);
             break;
         case 1:
-            ui->light1->setEnabled(pwr);
+            ui->light1->setEnabled(false);
             break;
         case 2:
-            ui->light2->setEnabled(pwr);
+            ui->light2->setEnabled(false);
             break;
         case 3:
-            ui->light3->setEnabled(pwr);
+            ui->light3->setEnabled(false);
             break;
         case 4:
-            ui->light4->setEnabled(pwr);
+            ui->light4->setEnabled(false);
             break;
         case 5:
-            ui->light5->setEnabled(pwr);
+            ui->light5->setEnabled(false);
             break;
         default:
             qInfo("Invalid Light Arguement to MAINWINDOW::LIGHTOFF : %d", lightNum);
