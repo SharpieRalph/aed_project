@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "aed.h"
 #include "patient.h"
+#include <QProgressBar>
 
 #define TOTAL_PATIENTS 4
 
@@ -28,8 +29,14 @@ private:
     Ui::MainWindow *ui;
     patient *listOfPatients;
     aed *AED;
+
+    QTimer* timer;
+    QProgressBar* batteryBar ;
     void nokOn();
     void nokOff();
+    void toggleTimer();
+
+    void updateProgressBar();
 
 private slots:
     void updatePatient(int newPatient);
@@ -38,5 +45,6 @@ private slots:
     void updatePads(int newPads);
     void lightOn(int lightNum);
     void lightOff(int lightNum);
+    void updateText(int textNum);
 };
 #endif // MAINWINDOW_H

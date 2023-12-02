@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QTimer>
+#include <QPushButton>
 
 MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     : QMainWindow(parent)
@@ -10,6 +12,17 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
 
     AED = new aed();    // Initializes AED
     listOfPatients = new patient[TOTAL_PATIENTS];   // Initializes listOfPatients
+
+    timer = new QTimer(this);
+    batteryBar = ui->batteryBar;
+
+
+    connect( ui->pwrBtn, &QPushButton::clicked, this, &MainWindow::toggleTimer);
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateProgressBar);
+
+
+
+
 
 //    //Shows that null ptr was set
 //    qInfo("%p",listOfPatients);
@@ -24,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     //Connecting light signals/slots
     connect(AED, SIGNAL(lightOn(int)), this, SLOT (lightOn(int)));
     connect(AED, SIGNAL(lightOff(int)), this, SLOT (lightOff(int)));
+    connect(AED, SIGNAL(updateText(int)), this, SLOT (updateText(int)));
 
 
 }
@@ -181,6 +195,61 @@ void MainWindow::lightOff(int lightNum)
         default:
             qInfo("Invalid Light Arguement to MAINWINDOW::LIGHTOFF : %d", lightNum);
 
+    }
+}
+
+void MainWindow::updateText(int textNum)
+{
+    switch(textNum){
+        case 0:
+            ui->LCD_text->setText("Stay Calm");
+            break;
+        case 1:
+            ui->LCD_text->setText("Check Reponsiveness");
+            break;
+        case 2:
+            ui->LCD_text->setText("Call for help");
+            break;
+        case 3:
+            ui->LCD_text->setText("Attach Defib Pads To Patients Bare Chest");
+            break;
+        case 4:
+            ui->LCD_text->setText("Dont Touch Patient. Analyzing");
+            break;
+        case 5:
+            ui->LCD_text->setText("Start CPR");
+            break;
+
+
+
+    }
+}
+
+void MainWindow::toggleTimer()
+{
+    if (timer->isActive()) {
+        // If the timer is active, stop it
+        timer->stop();
+    } else {
+        // If the timer is not active, start it
+        timer->start(1000); // Set the timer interval as needed (e.g., 1000 ms for 1 second)
+    }
+}
+
+void MainWindow::updateProgressBar()
+{
+    int decrementValue = 1;
+    int newValue =batteryBar->value() - decrementValue;
+
+    if (newValue < 0){
+        newValue = 0;
+    }
+
+    batteryBar->setValue(newValue);
+
+
+    if (newValue == 0) {
+        timer->stop();
     }
 }
 

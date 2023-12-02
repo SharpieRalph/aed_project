@@ -111,26 +111,32 @@ void aed::beginProc(int i)
         case 0:
             POSelfTest();
             qInfo("A/V Output: Stay Calm");
+            emit(updateText(0));
             delay(2);
             break;
         case 1:
             qInfo("A/V Output: Check Reponsiveness");
+            emit(updateText(1));
             delay(2);
             break;
         case 2:
             qInfo("A/V Output: Call For Help");
+            emit(updateText(2));
             delay(2);
             break;
         case 3:
             qInfo("A/V Output: Attach Defib Pads To Patients Bare Chest");
+            emit(updateText(3));
             delay(2);
             break;
         case 4:
             qInfo("A/V Output: Dont Touch Patient. Analyzing");
+            emit(updateText(4));
             delay(2);
             break;
         case 5:
             qInfo("A/V Output: Start CPR");
+            emit(updateText(5));
             delay(2);
             while(getPower() && !getCPR()){
                 qInfo("Push Harder");
