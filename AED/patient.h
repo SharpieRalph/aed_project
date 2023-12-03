@@ -15,12 +15,15 @@ public:
 
     int getPid();
     int getHeartRate();
+    int getPatientType();
+
     void setHeartRate(int);
+    void setPatientType(int);
 
 private:
     int heartRate; //patient heart rhythm status, note this may not be needed as pid might function as both status and id
     int pid; //patient id
-    int patientType; //patient child or adult
+    int patientType; //patient adult or child - 0 for adult, 1 for child
     static int nextPid; //used to set patient id for each created patient object
 };
 

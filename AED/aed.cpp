@@ -2,11 +2,14 @@
 #include <QTime>
 #include <QCoreApplication>
 
+int aed::timeOn = 0;
+
 aed::aed(QObject *parent)
     : QObject{parent}
 {
     hasPower = false;
     hasPatient = false;
+    padType = -1;
     correctPadPlacement = false;
     patientShockable = false;
     activeCPR = false;
@@ -38,7 +41,7 @@ bool aed::getCPR()
     return activeCPR;
 }
 
-bool aed::getPad()
+bool aed::getPadPlacement()
 {
     return correctPadPlacement;
 }
@@ -46,6 +49,22 @@ bool aed::getPad()
 bool aed::getOK()
 {
     return isOK;
+}
+
+patient* aed::getCurrPatient() {
+    return currPatient;
+}
+
+int aed::getTimeOn() {
+    return timeOn;
+}
+
+int aed::getPadType() {
+   return padType;
+}
+
+bool aed::getPatientShockable() {
+    return patientShockable;
 }
 
 // ---------------------------- SETTERS ----------------------------
@@ -70,7 +89,7 @@ void aed::setCPR(bool newCPR)
     activeCPR = newCPR;
 }
 
-void aed::setPad(bool newPads)
+void aed::setPadPlacement(bool newPads)
 {
     correctPadPlacement = newPads;
 }
@@ -80,7 +99,19 @@ void aed::setOK(bool newOK)
     isOK = newOK;
 }
 
-// ---------------------------- OTHERS ----------------------------
+void aed::setTimeOn(int s) {
+    timeOn = s;
+}
+
+void aed::setPadType(int t) {
+    padType = t;
+}
+
+void aed::setPatientShockable(bool s) {
+    patientShockable = s;
+}
+
+// ---------------------------- FUNCTIONS ----------------------------
 
 void aed::updateShocks()
 {
@@ -110,47 +141,97 @@ void aed::beginProc(int i)
     switch (i) {
         case 0:
             POSelfTest();
-            qInfo("A/V Output: Stay Calm");
+            qInfo("Audio Output: Stay Calm");
             emit(updateText(0));
             delay(2);
             break;
         case 1:
-            qInfo("A/V Output: Check Reponsiveness");
+            qInfo("Audio Output: Check Reponsiveness");
             emit(updateText(1));
             delay(2);
             break;
         case 2:
-            qInfo("A/V Output: Call For Help");
+            qInfo("Audio Output: Call For Help");
             emit(updateText(2));
             delay(2);
             break;
         case 3:
-            qInfo("A/V Output: Attach Defib Pads To Patients Bare Chest");
+            qInfo("Audio Output: Attach Defib Pads To Patients Bare Chest");
             emit(updateText(3));
             delay(2);
+            while((getPadType() < 0 || !getPadPlacement()) && getPower()) {
+                if(getPadType() < 0) {
+                             qInfo("Audio Output: Plug In Cable.");
+                             emit(updateText(4));
+                             delay(2);
+                }
+                if(!getPadPlacement()) {
+                    qInfo("Audio Output: Check Electrode Pads");
+                    emit(updateText(5));
+                    delay(2);
+                }
+            }
+            if(getPadType() == 0) {
+                qInfo("Audio Output: Adult Pads");
+                emit(updateText(6));
+                delay(2);
+            } else {
+                qInfo("Audio Output: Pediatric Pads");
+                emit(updateText(7));
+                delay(2);
+            }
             break;
         case 4:
-            qInfo("A/V Output: Dont Touch Patient. Analyzing");
-            emit(updateText(4));
+            qInfo("Audio Output: Dont Touch Patient. Analyzing");
+            emit(updateText(8));
             delay(2);
+            analysis();
             break;
+
         case 5:
-            qInfo("A/V Output: Start CPR");
-            emit(updateText(5));
+            qInfo("Audio Output: Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
+            emit(updateText(9));
+            delay(3);
+        break;
+        case 6:
+            qInfo("Audio Output: Start CPR");
+            emit(updateText(10));
             delay(2);
             while(getPower() && !getCPR()){
-                qInfo("Push Harder");
+                qInfo("Audio Output: Push Harder");
+                emit(updateText(11));
                 delay(2);
             }
             if(getPower()) {
                 qInfo("2 Minutes goes by while CPR is consistently administered");
                 delay(1);
-                qInfo("A/V Output: Stop CPR");
+                qInfo("Audio Output: Stop CPR");
+                emit(updateText(12));
                 delay(1);
             }
             break;
     }
+}
 
+void aed::incrTimeOn() {
+    timeOn++;
+}
 
+void aed::analysis() {
 
+    if(getCurrPatient()->getHeartRate() >= 300) {
+        // V-Fib
+        patientShockable = true;
+        emit(updateLCDImg(0));
+    } else if (getCurrPatient()->getHeartRate() > 120 && getCurrPatient()->getHeartRate() < 300) {
+        // V-Tach
+        patientShockable = true;
+        emit(updateText(1));
+    } else if (getCurrPatient()->getHeartRate() == 0) {
+        // Flatline
+        emit(updateText(2));
+    } else {
+        // Within normal ranges
+        emit(updateText(3));
+    }
 }

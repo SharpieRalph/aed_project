@@ -2,11 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include "aed.h"
 #include "patient.h"
 #include <QProgressBar>
 
-#define TOTAL_PATIENTS 4
+#define TOTAL_PATIENTS 7
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,31 +21,40 @@ public:
     MainWindow(QWidget *parent = nullptr, patient *newPatients = nullptr);
     ~MainWindow();
 
-    void setAED(aed *newAED);
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
-    void updateShocks();
-    void configurePatients();
 
 private:
+
     Ui::MainWindow *ui;
     patient *listOfPatients;
     aed *AED;
-
     QTimer* timer;
+    QTimer* LCDTimer;
     QProgressBar* batteryBar ;
+
     void nokOn();
     void nokOff();
     void toggleTimer();
-
+    void updateShocks();
     void updateProgressBar();
+    void configurePatients();
 
 private slots:
+
     void updatePatient(int newPatient);
     void updatePower(bool newPower);
-    void updateCPR(bool newCPR);
+    void toggleActiveCPR(bool newCPR);
     void updatePads(int newPads);
+    void updateLCDTimer();
     void lightOn(int lightNum);
     void lightOff(int lightNum);
     void updateText(int textNum);
+    void updateLCDImg(int diag);
+    void on_shallowCPRBtn_clicked(bool checked);
+    void on_adequateCPRBtn_clicked(bool checked);
+    void on_adultPadBtn_clicked();
+    void on_pedPadBtn_clicked();
 };
 #endif // MAINWINDOW_H

@@ -20,7 +20,7 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>940</x>
+      <x>887</x>
       <y>-30</y>
       <width>20</width>
       <height>801</height>
@@ -75,7 +75,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>318</x>
+      <x>298</x>
       <y>368</y>
       <width>31</width>
       <height>31</height>
@@ -119,7 +119,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>449</x>
+      <x>429</x>
       <y>202</y>
       <width>31</width>
       <height>31</height>
@@ -141,7 +141,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>665</x>
+      <x>645</x>
       <y>438</y>
       <width>31</width>
       <height>31</height>
@@ -163,10 +163,32 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>667</x>
+      <x>645</x>
       <y>599</y>
       <width>41</width>
       <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="light6">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>316</x>
+      <y>618</y>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -185,8 +207,8 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>337</x>
-      <y>618</y>
+      <x>471</x>
+      <y>475</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -201,184 +223,6 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="light0">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>480</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/light</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="LCD_text">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>310</y>
-      <width>201</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white;
-font: 8pt &quot;Liberation Sans Narrow&quot;;
-</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="shocksLabel">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>280</y>
-      <width>62</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Shocks:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="shockCounter">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>280</y>
-      <width>62</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>280</y>
-      <width>62</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>00:00</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="placementLabel">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>390</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Placement:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="placementIndicator">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>390</y>
-      <width>62</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>OKAY</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="batteryBar">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>390</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>95</number>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="padsGood">
-    <property name="geometry">
-     <rect>
-      <x>960</x>
-      <y>10</y>
-      <width>191</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Place Pads Correctly</string>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-    <attribute name="buttonGroup">
-     <string notr="true">buttonGroup</string>
-    </attribute>
-   </widget>
-   <widget class="QPushButton" name="padsBad">
-    <property name="geometry">
-     <rect>
-      <x>1160</x>
-      <y>10</y>
-      <width>191</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Place Pads Incorrectly</string>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-    <attribute name="buttonGroup">
-     <string notr="true">buttonGroup</string>
-    </attribute>
-   </widget>
-   <widget class="QPushButton" name="toggleCPR">
-    <property name="geometry">
-     <rect>
-      <x>1050</x>
-      <y>640</y>
-      <width>231</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Toggle Giving CPR</string>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
@@ -390,24 +234,445 @@ font: 8pt &quot;Liberation Sans Narrow&quot;;
     </property>
     <item>
      <property name="text">
-      <string>Normal</string>
+      <string>Normal - Adult</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Ventricular Fibrillation</string>
+      <string>Ventricular Fibrillation - Adult</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Ventricular Tachycardia</string>
+      <string>Ventricular Tachycardia - Adult</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Dead</string>
+      <string>Normal - Child</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Ventricular Fibrillation - Child</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ventricular Tachycardia - Child</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Flatline</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>250</y>
+      <width>285</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QPushButton" name="toggleCPR">
+     <property name="geometry">
+      <rect>
+       <x>77</x>
+       <y>40</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Toggle Giving CPR</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>67</x>
+       <y>10</y>
+       <width>150</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>DejaVu Sans</family>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>CPR TESTING</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="shallowCPRBtn">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>117</y>
+       <width>120</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Toggle Shallow</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>67</x>
+       <y>84</y>
+       <width>150</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Compression Depth</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="adequateCPRBtn">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>120</y>
+       <width>120</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Toggle Adequate</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="LCD">
+    <property name="geometry">
+     <rect>
+      <x>368</x>
+      <y>260</y>
+      <width>241</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #b0b0b0;
+border-radius: 5px;
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="shocksLabel">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>6</y>
+       <width>62</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>SHOCKS:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="shockCounter">
+     <property name="geometry">
+      <rect>
+       <x>71</x>
+       <y>6</y>
+       <width>16</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="timerLabel">
+     <property name="geometry">
+      <rect>
+       <x>171</x>
+       <y>6</y>
+       <width>62</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="CPRDepthBar">
+     <property name="geometry">
+      <rect>
+       <x>203</x>
+       <y>30</y>
+       <width>25</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar{
+	border: 2px solid rgb(61,56,70);
+	border-radius: 0px;
+}
+
+QProgressBar::chunk {
+	background-color: rgb(61, 56, 70)
+}</string>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>true</bool>
+     </property>
+     <property name="format">
+      <string/>
+     </property>
+    </widget>
+    <widget class="Line" name="minCPRLine">
+     <property name="geometry">
+      <rect>
+       <x>203</x>
+       <y>76</y>
+       <width>25</width>
+       <height>3</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(61, 56, 70);</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="maxCPRLine">
+     <property name="geometry">
+      <rect>
+       <x>203</x>
+       <y>90</y>
+       <width>25</width>
+       <height>3</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(61, 56, 70);</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="LCD_text">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>30</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>DejaVu Sans</family>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="batteryBar">
+     <property name="geometry">
+      <rect>
+       <x>104</x>
+       <y>5</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>95</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>80</y>
+      <width>285</width>
+      <height>160</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>10</y>
+       <width>220</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>DejaVu Sans</family>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>DEFIB PAD TESTING</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>87</x>
+       <y>84</y>
+       <width>110</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Pad Placement</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="padsGood">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>115</y>
+       <width>120</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Place Correctly</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttonGroup</string>
+     </attribute>
+    </widget>
+    <widget class="QPushButton" name="padsBad">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>115</y>
+       <width>120</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Placed Incorrectly</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttonGroup</string>
+     </attribute>
+    </widget>
+    <widget class="QPushButton" name="adultPadBtn">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Adult Pads</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pedPadBtn">
+     <property name="geometry">
+      <rect>
+       <x>155</x>
+       <y>40</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pediatric Pads</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <zorder>line</zorder>
    <zorder>pwrBtn</zorder>
@@ -417,19 +682,12 @@ font: 8pt &quot;Liberation Sans Narrow&quot;;
    <zorder>light2</zorder>
    <zorder>light3</zorder>
    <zorder>light4</zorder>
+   <zorder>light6</zorder>
    <zorder>light5</zorder>
-   <zorder>light0</zorder>
-   <zorder>LCD_text</zorder>
-   <zorder>shocksLabel</zorder>
-   <zorder>shockCounter</zorder>
-   <zorder>label</zorder>
-   <zorder>placementLabel</zorder>
-   <zorder>placementIndicator</zorder>
-   <zorder>batteryBar</zorder>
-   <zorder>padsGood</zorder>
-   <zorder>padsBad</zorder>
-   <zorder>toggleCPR</zorder>
    <zorder>comboBox</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>LCD</zorder>
+   <zorder>groupBox_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
