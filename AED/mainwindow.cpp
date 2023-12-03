@@ -179,9 +179,6 @@ void MainWindow::updatePower(bool newPower)
                     lightOff(stage);
                     stage++;
                 }
-                if(stage == 5) {
-                    updateShocks();
-                }
                 stage++;
             }
         }
@@ -325,6 +322,9 @@ void MainWindow::updateText(int textNum)
             break;
         case 9:
           ui->LCD_text->setText("Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
+          AED->delay(3);
+          ui->LCD_text->setText("Shock Delivered.");
+          updateShocks();
           break;
         case 10:
             ui->LCD_text->setText("Start CPR");

@@ -191,7 +191,8 @@ void aed::beginProc(int i)
         case 5:
             qInfo("Audio Output: Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
             emit(updateText(9));
-            delay(3);
+            qInfo("Audio Output: Shock Delivered.");
+            delay(2);
         break;
         case 6:
             qInfo("Audio Output: Start CPR");
