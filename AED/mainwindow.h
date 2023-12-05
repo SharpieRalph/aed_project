@@ -6,6 +6,7 @@
 #include "aed.h"
 #include "patient.h"
 #include <QProgressBar>
+#include "qcustomplot.h"
 
 #define TOTAL_PATIENTS 7
 
@@ -40,12 +41,15 @@ private:
     void updateShocks();
     void updateProgressBar();
     void configurePatients();
+    void showECG();
+    void hideECG();
 
 private slots:
 
     void updatePatient(int newPatient);
     void updatePower(bool newPower);
     void toggleActiveCPR(bool newCPR);
+    void toggleActiveECG(bool newECG);
     void updatePads(int newPads);
     void updateLCDTimer();
     void lightOn(int lightNum);

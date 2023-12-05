@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT (updatePatient(int)));
     connect(ui->pwrBtn, SIGNAL(clicked(bool)), this, SLOT (updatePower(bool)));
     connect(ui->toggleCPR, SIGNAL(clicked(bool)), this, SLOT (toggleActiveCPR(bool)));
+    connect(ui->toggleECG, SIGNAL(clicked(bool)), this, SLOT (toggleActiveECG(bool)));
     connect(ui->buttonGroup, SIGNAL(idClicked(int)), this, SLOT (updatePads(int)));
     ui->buttonGroup->setId(ui->padsGood, 0);
     ui->buttonGroup->setId(ui->padsBad, 1);
@@ -44,7 +45,32 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     connect(AED, SIGNAL(updateText(int)), this, SLOT (updateText(int)));
     connect(AED, SIGNAL(updateLCDImg(int)), this, SLOT (updateLCDImg(int)));
 
+//    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT (updateLCDImg(int)));
+//    connect(ui->ECG->graph(), SIGNAL(updateLCDImg(int)), this, SLOT (updateLCDImg(int)));
+
     configurePatients();
+
+    ui->ECG->setVisible(false);
+    ui->ECG->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+//    QCPGraph *graph = ui->ECG->addGraph();
+    ui->ECG->addGraph();
+
+//    graph->setLineStyle(QCPGraph::lsLine);
+//    graph->setPen(QPen("black"));
+    ui->ECG->graph(0)->setLineStyle(QCPGraph::lsLine);
+    ui->ECG->graph(0)->setPen(QPen("black"));
+
+    ui->ECG->xAxis->setTickLabels(false);
+    ui->ECG->yAxis->setTickLabels(false);
+    ui->ECG->xAxis->setTicks(false);
+    ui->ECG->yAxis->setTicks(false);
+    ui->ECG->yAxis->setRange(-2, 2);
+    ui->ECG->xAxis->setRange(0, 10);
+    ui->ECG->xAxis->setVisible(false);
+    ui->ECG->yAxis->setVisible(false);
+    ui->ECG->setBackground(QBrush("#b0b0b0"));
+
+
 
 }
 
@@ -142,6 +168,20 @@ void MainWindow::configurePatients()
 
 }
 
+//Show's the patients ECG
+void MainWindow::showECG()
+{
+    ui->ECG->setVisible(true);
+    ui->LCD_text->move(15, 100);
+}
+
+//Hide's the patients ECG
+void MainWindow::hideECG()
+{
+    ui->ECG->setVisible(false);
+    ui->LCD_text->move(15, 30);
+}
+
 
 // ---------------------------- SLOTS ----------------------------
 
@@ -149,8 +189,18 @@ void MainWindow::configurePatients()
 //Receives signial from ui and updates mainwindow accordingly
 void MainWindow::updatePatient(int newPatient)
 {
-    //qInfo("ComboBox sent: %i", newPatient);
+    qInfo("ComboBox sent: %i", newPatient);
     AED->setPatient(&listOfPatients[newPatient]);
+    //Select's the current Patients ECG
+    if(newPatient == 1 || newPatient == 4){
+        updateLCDImg(0);
+    } else if (newPatient == 2 || newPatient == 5) {
+        updateLCDImg(1);
+    } else if (newPatient == 6) {
+        updateLCDImg(2);
+    } else {
+        updateLCDImg(3);
+    }
 }
 
 // Handles turning on the device as well as the loop that initates the entire functionality of the program
@@ -201,6 +251,18 @@ void MainWindow::toggleActiveCPR(bool newCPR)
         AED->setCPR(newCPR);
         ui->shallowCPRBtn->setEnabled(false);
         ui->adequateCPRBtn->setEnabled(false);
+    }
+}
+
+//Toggles AED to show or hide ECG and also update mainwindow to reflect this change
+void MainWindow::toggleActiveECG(bool newECG)
+{
+    qInfo("Show ECG Plot: %i", newECG);
+    AED->setShowECG(newECG);
+    if(newECG){
+        showECG();
+    } else {
+        hideECG();
     }
 }
 
@@ -338,26 +400,398 @@ void MainWindow::updateText(int textNum)
     }
 }
 
-// Switch case that handles what ECG Waveform is shown in the LCD
+// Switch case that handles what ECG Waveform is shown in the LCD, Note all Children have shorter intervals
 void MainWindow::updateLCDImg(int diag) {
     switch (diag) {
         //V-Fib
         case 0:
             // Update LCD to V-Fib ECG
             qInfo("Update LCD to V-Fib ECG");
+            if(AED->getCurrPatient()->getPatientType() == 0){ //Adult
+                //Clear previous data points
+                QVector<double> x(0), y(0);
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+                ui->ECG->graph()->addData(0, 0);
+                ui->ECG->graph()->addData(0.5, 1.5);
+                ui->ECG->graph()->addData(0.7, 0);
+                ui->ECG->graph()->addData(0.9, 1.8);
+                ui->ECG->graph()->addData(1.1, 0.5);
+                ui->ECG->graph()->addData(1.3, 1.7);
+                ui->ECG->graph()->addData(1.4, 0.9);
+                ui->ECG->graph()->addData(1.6, -0.9);
+                ui->ECG->graph()->addData(1.7, 0.1);
+                ui->ECG->graph()->addData(1.9, 1.1);
+                ui->ECG->graph()->addData(2, 1.4);
+                ui->ECG->graph()->addData(2.3, -0.4);
+                ui->ECG->graph()->addData(2.5, -1.7);
+                ui->ECG->graph()->addData(2.6, 0.5);
+                ui->ECG->graph()->addData(2.7, 0);
+                ui->ECG->graph()->addData(2.9, 1.6);
+                ui->ECG->graph()->addData(3.1, 0.1);
+                ui->ECG->graph()->addData(3.3, -1.7);
+                ui->ECG->graph()->addData(3.4, -0.9);
+                ui->ECG->graph()->addData(3.6, 1.4);
+                ui->ECG->graph()->addData(3.7, 0.1);
+                ui->ECG->graph()->addData(3.9, 1.1);
+                ui->ECG->graph()->addData(4, -1.4);
+                ui->ECG->graph()->addData(4.3, -0.4);
+                ui->ECG->graph()->addData(4.4, 0);
+                ui->ECG->graph()->addData(4.5, 1.3);
+                ui->ECG->graph()->addData(4.7, 0);
+                ui->ECG->graph()->addData(4.9, 1.8);
+                ui->ECG->graph()->addData(5.1, 0.5);
+                ui->ECG->graph()->addData(5.3, 1.7);
+                ui->ECG->graph()->addData(5.4, 0.9);
+                ui->ECG->graph()->addData(5.6, -0.9);
+                ui->ECG->graph()->addData(5.7, 0.1);
+                ui->ECG->graph()->addData(5.9, 1.1);
+                ui->ECG->graph()->addData(6, 1.4);
+                ui->ECG->graph()->addData(6.3, -0.4);
+                ui->ECG->graph()->addData(6.5, -1.7);
+                ui->ECG->graph()->addData(6.6, 0.5);
+                ui->ECG->graph()->addData(6.7, 0);
+                ui->ECG->graph()->addData(6.9, 1.6);
+                ui->ECG->graph()->addData(7.1, 0.1);
+                ui->ECG->graph()->addData(7.3, -1.7);
+                ui->ECG->graph()->addData(7.4, -0.9);
+                ui->ECG->graph()->addData(7.6, 1.4);
+                ui->ECG->graph()->addData(7.7, 0.1);
+                ui->ECG->graph()->addData(7.9, 1.1);
+                ui->ECG->graph()->addData(8, -1.4);
+                ui->ECG->graph()->addData(8.3, -0.4);
+                ui->ECG->graph()->addData(8.4, 1.7);
+                ui->ECG->graph()->addData(8.5, 0.9);
+                ui->ECG->graph()->addData(8.6, -0.9);
+                ui->ECG->graph()->addData(8.7, 0.1);
+                ui->ECG->graph()->addData(8.9, 1.1);
+                ui->ECG->graph()->addData(9, 1.4);
+                ui->ECG->graph()->addData(9.3, -0.4);
+                ui->ECG->graph()->addData(9.5, -1.7);
+                ui->ECG->graph()->addData(9.6, 0.5);
+                ui->ECG->graph()->addData(9.7, 0);
+                ui->ECG->graph()->addData(9.8, 1);
+                ui->ECG->graph()->addData(10, -1);
+                ui->ECG->replot();
+            } else { //Child
+                //Clear previous data points
+                QVector<double> x(0), y(0);
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+                ui->ECG->graph()->addData(0, 0);
+                ui->ECG->graph()->addData(0.25, 1.5);
+                ui->ECG->graph()->addData(0.35, 0);
+                ui->ECG->graph()->addData(0.45, 1.8);
+                ui->ECG->graph()->addData(0.55, 0.5);
+                ui->ECG->graph()->addData(0.65, 1.7);
+                ui->ECG->graph()->addData(0.7, 0.9);
+                ui->ECG->graph()->addData(0.8, -0.9);
+                ui->ECG->graph()->addData(0.85, 0.1);
+                ui->ECG->graph()->addData(0.95, 1.1);
+                ui->ECG->graph()->addData(1, 1.4);
+                ui->ECG->graph()->addData(1.15, -0.4);
+                ui->ECG->graph()->addData(1.25, -1.7);
+                ui->ECG->graph()->addData(1.3, 0.5);
+                ui->ECG->graph()->addData(1.35, 0);
+                ui->ECG->graph()->addData(1.45, 1.6);
+                ui->ECG->graph()->addData(1.55, 0.1);
+                ui->ECG->graph()->addData(1.65, -1.7);
+                ui->ECG->graph()->addData(1.7, -0.9);
+                ui->ECG->graph()->addData(1.8, 1.4);
+                ui->ECG->graph()->addData(1.85, 0.1);
+                ui->ECG->graph()->addData(1.95, 1.1);
+                ui->ECG->graph()->addData(2, -1.4);
+                ui->ECG->graph()->addData(2.15, -0.4);
+                ui->ECG->graph()->addData(2.2, 0);
+                ui->ECG->graph()->addData(2.25, 1.3);
+                ui->ECG->graph()->addData(2.35, 0);
+                ui->ECG->graph()->addData(2.45, 1.8);
+                ui->ECG->graph()->addData(2.55, 0.5);
+                ui->ECG->graph()->addData(2.65, 1.7);
+                ui->ECG->graph()->addData(2.7, 0.9);
+                ui->ECG->graph()->addData(2.8, -0.9);
+                ui->ECG->graph()->addData(2.85, 0.1);
+                ui->ECG->graph()->addData(2.95, 1.1);
+                ui->ECG->graph()->addData(3, 1.4);
+                ui->ECG->graph()->addData(3.15, -0.4);
+                ui->ECG->graph()->addData(3.25, -1.7);
+                ui->ECG->graph()->addData(3.3, 0.5);
+                ui->ECG->graph()->addData(3.35, 0);
+                ui->ECG->graph()->addData(3.45, 1.6);
+                ui->ECG->graph()->addData(3.55, 0.1);
+                ui->ECG->graph()->addData(3.65, -1.7);
+                ui->ECG->graph()->addData(3.70, -0.9);
+                ui->ECG->graph()->addData(3.8, 1.4);
+                ui->ECG->graph()->addData(3.85, 0.1);
+                ui->ECG->graph()->addData(3.95, 1.1);
+                ui->ECG->graph()->addData(4, -1.4);
+                ui->ECG->graph()->addData(4.15, -0.4);
+                ui->ECG->graph()->addData(4.2, 1.7);
+                ui->ECG->graph()->addData(4.25, 0.9);
+                ui->ECG->graph()->addData(4.3, -0.9);
+                ui->ECG->graph()->addData(4.35, 0.1);
+                ui->ECG->graph()->addData(4.45, 1.1);
+                ui->ECG->graph()->addData(4.5, 1.4);
+                ui->ECG->graph()->addData(4.65, -0.4);
+                ui->ECG->graph()->addData(4.75, -1.7);
+                ui->ECG->graph()->addData(4.8, 0.5);
+                ui->ECG->graph()->addData(4.85, 0);
+                ui->ECG->graph()->addData(4.9, 1);
+                ui->ECG->graph()->addData(5, -1);
+
+                ui->ECG->graph()->addData(5.05, 0);
+                ui->ECG->graph()->addData(5.15, 1.5);
+                ui->ECG->graph()->addData(5.25, 0);
+                ui->ECG->graph()->addData(5.3, 1.8);
+                ui->ECG->graph()->addData(5.4, 0.5);
+                ui->ECG->graph()->addData(5.45, 1.7);
+                ui->ECG->graph()->addData(5.55, 0.9);
+                ui->ECG->graph()->addData(5.6, -0.9);
+                ui->ECG->graph()->addData(5.65, 0.1);
+                ui->ECG->graph()->addData(5.7, 1.1);
+                ui->ECG->graph()->addData(5.8, 1.4);
+                ui->ECG->graph()->addData(5.9, -0.4);
+                ui->ECG->graph()->addData(6, -1.7);
+                ui->ECG->graph()->addData(6.05, 0.5);
+                ui->ECG->graph()->addData(6.1, 0);
+                ui->ECG->graph()->addData(6.15, 1.6);
+                ui->ECG->graph()->addData(6.3, 0.1);
+                ui->ECG->graph()->addData(6.35, -1.7);
+                ui->ECG->graph()->addData(6.4, -0.9);
+                ui->ECG->graph()->addData(6.5, 1.4);
+                ui->ECG->graph()->addData(6.55, 0.1);
+                ui->ECG->graph()->addData(6.6, 1.1);
+                ui->ECG->graph()->addData(6.7, -1.4);
+                ui->ECG->graph()->addData(6.75, -0.4);
+                ui->ECG->graph()->addData(6.8, 0);
+                ui->ECG->graph()->addData(6.85, 1.3);
+                ui->ECG->graph()->addData(6.9, 0);
+                ui->ECG->graph()->addData(6.95, 1.8);
+                ui->ECG->graph()->addData(7, 0.5);
+                ui->ECG->graph()->addData(7.05, 1.7);
+                ui->ECG->graph()->addData(7.1, 0.9);
+                ui->ECG->graph()->addData(7.2, -0.9);
+                ui->ECG->graph()->addData(7.3, 0.1);
+                ui->ECG->graph()->addData(7.4, 1.1);
+                ui->ECG->graph()->addData(7.5, 1.4);
+                ui->ECG->graph()->addData(7.55, -0.4);
+                ui->ECG->graph()->addData(7.6, -1.7);
+                ui->ECG->graph()->addData(7.65, 0.5);
+                ui->ECG->graph()->addData(7.7, 0);
+                ui->ECG->graph()->addData(7.75, 1.6);
+                ui->ECG->graph()->addData(7.85, 0.1);
+                ui->ECG->graph()->addData(7.9, -1.7);
+                ui->ECG->graph()->addData(7.95, -0.9);
+                ui->ECG->graph()->addData(8, 1.4);
+                ui->ECG->graph()->addData(8.05, 0.1);
+                ui->ECG->graph()->addData(8.1, 1.1);
+                ui->ECG->graph()->addData(8.2, -1.4);
+                ui->ECG->graph()->addData(8.25, -0.4);
+                ui->ECG->graph()->addData(8.3, 1.7);
+                ui->ECG->graph()->addData(8.35, 0.9);
+                ui->ECG->graph()->addData(8.4, -0.9);
+                ui->ECG->graph()->addData(8.45, 0.1);
+                ui->ECG->graph()->addData(8.50, 1.1);
+                ui->ECG->graph()->addData(8.55, 1.4);
+                ui->ECG->graph()->addData(8.6, -0.4);
+                ui->ECG->graph()->addData(8.7, -1.7);
+                ui->ECG->graph()->addData(8.8, 0.5);
+                ui->ECG->graph()->addData(8.85, 0);
+                ui->ECG->graph()->addData(9, 1);
+                ui->ECG->graph()->addData(9.1, -1);
+                ui->ECG->graph()->addData(9.15, 0);
+                ui->ECG->graph()->addData(9.2, 1.5);
+                ui->ECG->graph()->addData(9.3, 0);
+                ui->ECG->graph()->addData(9.35, 1.8);
+                ui->ECG->graph()->addData(9.45, 0.5);
+                ui->ECG->graph()->addData(9.5, 1.7);
+                ui->ECG->graph()->addData(9.55, 0.9);
+                ui->ECG->graph()->addData(9.6, -0.9);
+                ui->ECG->graph()->addData(9.65, 0.1);
+                ui->ECG->graph()->addData(9.7, 1.1);
+                ui->ECG->graph()->addData(9.8, 1.4);
+                ui->ECG->graph()->addData(9.9, -0.4);
+                ui->ECG->graph()->addData(10, -1.7);
+                ui->ECG->replot();
+            }
             break;
         // V-Tach
         case 1:
             // Update LCD to V-Tach ECG
             qInfo("Update LCD to V-Tach ECG");
+            if(AED->getCurrPatient()->getPatientType() == 0){ //Adult
+                int n = 500;
+                QVector<double> x(n), y(n);
+                for (int i=0; i<n; ++i)
+                {
+                    x[i] = i/(double)(n-1)*34 - 17;
+                    y[i] = qSin(4*x[i]);
+                }
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+            } else { //Child
+                int n = 500;
+                QVector<double> x(n), y(n);
+                for (int i=0; i<n; ++i)
+                {
+                    x[i] = i/(double)(n-1)*34 - 17;
+                    y[i] = qSin(8*x[i]);
+                }
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+            }
             break;
         case 2:
-            // Update LCD to Flatline ECG
+            // Update LCD to Flatline ECG, Also to avoid initialization error we need to contain the variables inside of an if else statement
             qInfo("Update LCD to Flatline ECG");
+            if(AED->getCurrPatient()->getPatientType() == 0){ //Adult
+                int n = 2;
+                QVector<double> x(n), y(n);
+                x[0] = 0;
+                x[1] = 10;
+                y[0] = 0;
+                y[1] = 0;
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+            } else { //Child
+                int n = 2;
+                QVector<double> x(n), y(n);
+                x[0] = 0;
+                x[1] = 10;
+                y[0] = 0;
+                y[1] = 0;
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+            }
             break;
         case 3:
             // Update LCD to Normal ECG
             qInfo("Update LCD to Normal ECG");
+            if(AED->getCurrPatient()->getPatientType() == 0){ //Adult
+                //Clear previous data points
+                QVector<double> x(0), y(0);
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+                //Add each new data point
+                ui->ECG->graph()->addData(0, 0);
+                ui->ECG->graph()->addData(1, 0);
+                ui->ECG->graph()->addData(1.25, 0.25);
+                ui->ECG->graph()->addData(1.5, 0.5);
+                ui->ECG->graph()->addData(1.75, 0.25);
+                ui->ECG->graph()->addData(2, 0);
+
+                ui->ECG->graph()->addData(2, 0);
+                ui->ECG->graph()->addData(2.2, 1.7);
+                ui->ECG->graph()->addData(2.3, -0.8);
+                ui->ECG->graph()->addData(2.5, 0);
+
+                ui->ECG->graph()->addData(3.5, 0);
+                ui->ECG->graph()->addData(3.75, 0.25);
+                ui->ECG->graph()->addData(4, 0.5);
+                ui->ECG->graph()->addData(4.25, 0.25);
+                ui->ECG->graph()->addData(4.5, 0);
+
+                ui->ECG->graph()->addData(4.9, 1.7);
+                ui->ECG->graph()->addData(5, -0.8);
+                ui->ECG->graph()->addData(5.2, 0);
+
+                ui->ECG->graph()->addData(6.2, 0);
+                ui->ECG->graph()->addData(6.45, 0.25);
+                ui->ECG->graph()->addData(6.7, 0.5);
+                ui->ECG->graph()->addData(6.95, 0.25);
+                ui->ECG->graph()->addData(7.20, 0);
+
+                ui->ECG->graph()->addData(7.4, 1.7);
+                ui->ECG->graph()->addData(7.5, -0.8);
+                ui->ECG->graph()->addData(7.7, 0);
+
+                ui->ECG->graph()->addData(8.7, 0);
+                ui->ECG->graph()->addData(8.95, 0.25);
+                ui->ECG->graph()->addData(9.20, 0.5);
+                ui->ECG->graph()->addData(9.45, 0.25);
+                ui->ECG->graph()->addData(9.7, 0);
+
+                ui->ECG->graph()->addData(10, 1.7);
+                ui->ECG->replot();
+            } else { //Child
+                //Clear previous data points
+                QVector<double> x(0), y(0);
+                ui->ECG->graph(0)->setData(x, y);
+                ui->ECG->replot();
+                //Add each new data point
+                ui->ECG->graph()->addData(0, 0);
+                ui->ECG->graph()->addData(0.5, 0);
+                ui->ECG->graph()->addData(0.625, 0.25);
+                ui->ECG->graph()->addData(0.75, 0.5);
+                ui->ECG->graph()->addData(0.875, 0.25);
+                ui->ECG->graph()->addData(1, 0);
+
+                ui->ECG->graph()->addData(1, 0);
+                ui->ECG->graph()->addData(1.1, 1.7);
+                ui->ECG->graph()->addData(1.15, -0.8);
+                ui->ECG->graph()->addData(1.25, 0);
+
+                ui->ECG->graph()->addData(1.75, 0);
+                ui->ECG->graph()->addData(1.875, 0.25);
+                ui->ECG->graph()->addData(2, 0.5);
+                ui->ECG->graph()->addData(2.125, 0.25);
+                ui->ECG->graph()->addData(2.25, 0);
+
+                ui->ECG->graph()->addData(2.45, 1.7);
+                ui->ECG->graph()->addData(2.5, -0.8);
+                ui->ECG->graph()->addData(2.6, 0);
+
+                ui->ECG->graph()->addData(3.1, 0);
+                ui->ECG->graph()->addData(3.225, 0.25);
+                ui->ECG->graph()->addData(3.35, 0.5);
+                ui->ECG->graph()->addData(3.475, 0.25);
+                ui->ECG->graph()->addData(3.6, 0);
+
+                ui->ECG->graph()->addData(3.7, 1.7);
+                ui->ECG->graph()->addData(3.75, -0.8);
+                ui->ECG->graph()->addData(3.85, 0);
+
+                ui->ECG->graph()->addData(4.35, 0);
+                ui->ECG->graph()->addData(4.475, 0.25);
+                ui->ECG->graph()->addData(4.6, 0.5);
+                ui->ECG->graph()->addData(4.725, 0.25);
+                ui->ECG->graph()->addData(4.85, 0);
+
+                ui->ECG->graph()->addData(5, 1.7);
+                ui->ECG->graph()->addData(5.05, -0.8);
+                ui->ECG->graph()->addData(5.15, 0);
+
+                ui->ECG->graph()->addData(5.65, 0);
+                ui->ECG->graph()->addData(5.775, 0.25);
+                ui->ECG->graph()->addData(5.9, 0.5);
+                ui->ECG->graph()->addData(6.025, 0.25);
+                ui->ECG->graph()->addData(6.15, 0);
+
+                ui->ECG->graph()->addData(6.275, 1.7);
+                ui->ECG->graph()->addData(6.4, -0.8);
+                ui->ECG->graph()->addData(6.65, 0);
+
+                ui->ECG->graph()->addData(7.15, 0);
+                ui->ECG->graph()->addData(7.4, 0.25);
+                ui->ECG->graph()->addData(7.525, 0.5);
+                ui->ECG->graph()->addData(7.65, 0.25);
+                ui->ECG->graph()->addData(7.775, 0);
+
+                ui->ECG->graph()->addData(7.9, 1.7);
+                ui->ECG->graph()->addData(8.025, -0.8);
+                ui->ECG->graph()->addData(8.275, 0);
+
+                ui->ECG->graph()->addData(8.775, 0);
+                ui->ECG->graph()->addData(8.9, 0.25);
+                ui->ECG->graph()->addData(9.025, 0.5);
+                ui->ECG->graph()->addData(9.275, 0.25);
+                ui->ECG->graph()->addData(9.4, 0);
+
+                ui->ECG->graph()->addData(9.65, 1.7);
+                ui->ECG->graph()->addData(9.775, -0.8);
+                ui->ECG->graph()->addData(10, 0);
+                ui->ECG->replot();
+            }
             break;
     }
 }

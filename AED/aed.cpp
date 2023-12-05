@@ -17,6 +17,7 @@ aed::aed(QObject *parent)
     statusECG = 0;
     currPatient = nullptr;
     isOK = true;
+    showECG = false;
 }
 
 // ---------------------------- GETTERS ----------------------------
@@ -67,6 +68,10 @@ bool aed::getPatientShockable() {
     return patientShockable;
 }
 
+bool aed::getShowECG() {
+    return showECG;
+}
+
 // ---------------------------- SETTERS ----------------------------
 
 void aed::setPatient(patient *newPatient)
@@ -109,6 +114,10 @@ void aed::setPadType(int t) {
 
 void aed::setPatientShockable(bool s) {
     patientShockable = s;
+}
+
+void aed::setShowECG(bool newShowECG) {
+    showECG = newShowECG;
 }
 
 // ---------------------------- FUNCTIONS ----------------------------
@@ -227,12 +236,15 @@ void aed::analysis() {
     } else if (getCurrPatient()->getHeartRate() > 120 && getCurrPatient()->getHeartRate() < 300) {
         // V-Tach
         patientShockable = true;
+        emit(updateLCDImg(1));
         emit(updateText(1));
     } else if (getCurrPatient()->getHeartRate() == 0) {
         // Flatline
+        emit(updateLCDImg(2));
         emit(updateText(2));
     } else {
         // Within normal ranges
+        emit(updateLCDImg(3));
         emit(updateText(3));
     }
 }

@@ -21,6 +21,7 @@ public:
     int getTimeOn();
     int getPadType();
     bool getPatientShockable();
+    bool getShowECG();
 
     void setPatient(patient *newPatient);
     void setPower(bool newPower);
@@ -30,6 +31,7 @@ public:
     void setTimeOn(int);
     void setPadType(int);
     void setPatientShockable(bool);
+    void setShowECG(bool);
 
     void updateShocks();
     void delay(int);
@@ -56,6 +58,8 @@ private:
     static int timeOn;
     int numShocks; //Number of shocks the AED has administered so far
     int statusECG; //status of ECG
+    bool showECG; //Is ECG plot being displayed
+//    QCPGraph plotECG; //Is our ECG
     patient *currPatient; //Object representing patient currently connected by the AED's pads
 
 
