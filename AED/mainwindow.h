@@ -7,6 +7,7 @@
 #include "patient.h"
 #include <QProgressBar>
 #include "qcustomplot.h"
+#include <cstdlib>
 
 #define TOTAL_PATIENTS 7
 

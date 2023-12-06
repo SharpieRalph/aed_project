@@ -201,6 +201,16 @@ void aed::beginProc(int i)
             qInfo("Audio Output: Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
             emit(updateText(9));
             qInfo("Audio Output: Shock Delivered.");
+            //Give 0 to 4 so 1 in 5 chances that patient returns to normal
+            if(rand() % 5 == 0) {
+                qInfo("Patient has been resuscitated.");
+                //Check if patient is Adult or Child
+                if(getCurrPatient()->getPatientType()==0){
+                    emit(updatePatient(0));
+                } else {
+                    emit(updatePatient(3));
+                }
+            }
             delay(2);
         break;
         case 6:

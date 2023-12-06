@@ -21,14 +21,8 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     batteryBar = ui->batteryBar;
 
     connect( ui->pwrBtn, &QPushButton::clicked, this, &MainWindow::toggleTimer);
-
     connect(timer, &QTimer::timeout, this, &MainWindow::updateProgressBar);
     connect(LCDTimer, &QTimer::timeout, this, &MainWindow::updateLCDTimer);
-
-
-//    //Shows that null ptr was set
-//    qInfo("%p",listOfPatients);
-//    qInfo("%p",AED);
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT (updatePatient(int)));
     connect(ui->pwrBtn, SIGNAL(clicked(bool)), this, SLOT (updatePower(bool)));
     connect(ui->toggleCPR, SIGNAL(clicked(bool)), this, SLOT (toggleActiveCPR(bool)));
@@ -40,26 +34,19 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     //Connecting light signals/slots
     connect(AED, SIGNAL(lightOn(int)), this, SLOT (lightOn(int)));
     connect(AED, SIGNAL(lightOff(int)), this, SLOT (lightOff(int)));
-
-
     connect(AED, SIGNAL(updateText(int)), this, SLOT (updateText(int)));
     connect(AED, SIGNAL(updateLCDImg(int)), this, SLOT (updateLCDImg(int)));
+    connect(AED, SIGNAL(updatePatient(int)), this, SLOT (updatePatient(int)));
 
-//    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT (updateLCDImg(int)));
-//    connect(ui->ECG->graph(), SIGNAL(updateLCDImg(int)), this, SLOT (updateLCDImg(int)));
 
     configurePatients();
 
+    //Init ECG Plot and hide it.
     ui->ECG->setVisible(false);
     ui->ECG->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-//    QCPGraph *graph = ui->ECG->addGraph();
     ui->ECG->addGraph();
-
-//    graph->setLineStyle(QCPGraph::lsLine);
-//    graph->setPen(QPen("black"));
     ui->ECG->graph(0)->setLineStyle(QCPGraph::lsLine);
     ui->ECG->graph(0)->setPen(QPen("black"));
-
     ui->ECG->xAxis->setTickLabels(false);
     ui->ECG->yAxis->setTickLabels(false);
     ui->ECG->xAxis->setTicks(false);
@@ -73,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     //Load in Normal Adult ECG to graph, but doesn't make graph visable yet
     updateLCDImg(3);
 
+    //Seed random
+    srand((unsigned) time(NULL));
 }
 
 MainWindow::~MainWindow()
@@ -207,6 +196,7 @@ void MainWindow::updatePatient(int newPatient)
         updateLCDImg(2);
     } else {
         updateLCDImg(3);
+        AED->setPatientShockable(false);
     }
 }
 
@@ -549,7 +539,6 @@ void MainWindow::updateLCDImg(int diag) {
                 ui->ECG->graph()->addData(4.85, 0);
                 ui->ECG->graph()->addData(4.9, 1);
                 ui->ECG->graph()->addData(5, -1);
-
                 ui->ECG->graph()->addData(5.05, 0);
                 ui->ECG->graph()->addData(5.15, 1.5);
                 ui->ECG->graph()->addData(5.25, 0);

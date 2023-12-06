@@ -46,6 +46,7 @@ signals:
     void lightOff(int lightNum);
     void updateText(int textNum);
     void updateLCDImg(int diag);
+    void updatePatient(int newPatient);
 
 private:
     bool hasPower; //AED has power
