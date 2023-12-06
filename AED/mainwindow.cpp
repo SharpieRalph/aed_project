@@ -172,8 +172,14 @@ void MainWindow::configurePatients()
 //Show's the patients ECG
 void MainWindow::showECG()
 {
-    ui->ECG->setVisible(true);
-    ui->LCD_text->move(15, 100);
+    //Checks that pads are placed if no pads are placed ECG can't be read
+    if(AED->getPadPlacement() == false){
+        qInfo("Pad placement is bad unable to read ECG");
+    } else {
+        qInfo("Pad placement is good able to read ECG");
+        ui->ECG->setVisible(true);
+        ui->LCD_text->move(15, 100);
+    }
 }
 
 //Hide's the patients ECG
@@ -238,6 +244,7 @@ void MainWindow::updatePower(bool newPower)
         AED->setPower(false);
         LCDTimer->stop();
         AED->setTimeOn(0);
+        toggleActiveECG(false);
         nokOff();
     }
 }
@@ -258,11 +265,13 @@ void MainWindow::toggleActiveCPR(bool newCPR)
 //Toggles AED to show or hide ECG and also update mainwindow to reflect this change
 void MainWindow::toggleActiveECG(bool newECG)
 {
-    qInfo("Show ECG Plot: %i", newECG);
+//    qInfo("Show ECG Plot: %i", newECG);
     AED->setShowECG(newECG);
-    if(newECG){
+    //Check that pads are already correctly placed and machine is on, if not do not call showECG and make sure button stays unchecked
+    if(newECG && AED->getPadPlacement()==true && AED->getPower()==true){
         showECG();
     } else {
+        ui->toggleECG->setChecked(false);
         hideECG();
     }
 }
@@ -276,6 +285,7 @@ void MainWindow::updatePads(int newPads)
 //        qInfo("correctPads: %i", AED->getPad());
     } else {
         AED->setPadPlacement(false);
+        toggleActiveECG(false);
 //        qInfo("correctPads: %i", AED->getPad());
     }
 }
