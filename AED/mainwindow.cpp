@@ -70,7 +70,8 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     ui->ECG->yAxis->setVisible(false);
     ui->ECG->setBackground(QBrush("#b0b0b0"));
 
-
+    //Load in Normal Adult ECG to graph, but doesn't make graph visable yet
+    updateLCDImg(3);
 
 }
 

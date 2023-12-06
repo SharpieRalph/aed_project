@@ -59,7 +59,6 @@ private:
     int numShocks; //Number of shocks the AED has administered so far
     int statusECG; //status of ECG
     bool showECG; //Is ECG plot being displayed
-//    QCPGraph plotECG; //Is our ECG
     patient *currPatient; //Object representing patient currently connected by the AED's pads
 
 
