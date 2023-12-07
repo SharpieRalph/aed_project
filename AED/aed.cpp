@@ -18,6 +18,13 @@ aed::aed(QObject *parent)
     currPatient = nullptr;
     isOK = true;
     showECG = false;
+
+    ECGSignalFunctional = false;
+    defribilatorFunctional = false;
+    FAAEDPlusFunctional = false;
+    CPRMonitoringFunctional = false;
+    VPfunctional = false;
+
 }
 
 // ---------------------------- GETTERS ----------------------------
@@ -120,6 +127,23 @@ void aed::setShowECG(bool newShowECG) {
     showECG = newShowECG;
 }
 
+void aed::setECGSignalFunctional(bool flag){
+    ECGSignalFunctional = flag;
+}
+
+void aed::setdefribilatorFunctional(bool flag){
+    defribilatorFunctional = flag;
+}
+void aed::setFAAEDPlusFunctional(bool flag){
+    FAAEDPlusFunctional = flag;
+}
+void aed::setCPRMonitoringFunctional(bool flag){
+    CPRMonitoringFunctional = flag;
+}
+
+void aed::setVPfunctional(bool flag){
+    VPfunctional = flag;
+}
 // ---------------------------- FUNCTIONS ----------------------------
 
 void aed::updateShocks()
@@ -134,14 +158,19 @@ void aed::delay(int s) {
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
     }
 }
-
-void aed::POSelfTest()
+bool aed::POSelfTest()
 {
     // NEED TO IMPLEMENT
     qInfo("Administering self test");
     delay(1);
+    if(!(ECGSignalFunctional & defribilatorFunctional & FAAEDPlusFunctional & CPRMonitoringFunctional &  VPfunctional)){
+        qInfo("AUdio output: Unit Failed Warning");
+        return false;
+
+    }
     qInfo("A/V Output: Test Complete - Unit Okay");
     delay(1);
+    return true;
 }
 
 void aed::beginProc(int i)
@@ -149,7 +178,11 @@ void aed::beginProc(int i)
 
     switch (i) {
         case 0:
-            POSelfTest();
+            if(!POSelfTest()){
+                emit(selfTurnOff());
+                qInfo("Audio Output: Device is shutting down");
+                break;
+            }
             qInfo("Audio Output: Stay Calm");
             emit(updateText(0));
             delay(2);

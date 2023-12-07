@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     ui->setupUi(this);
 
     AED = new aed();    // Initializes AED
+    aedIsOn = false;
     listOfPatients = new patient[TOTAL_PATIENTS];   // Initializes listOfPatients
     AED->setPatient(&listOfPatients[0]);    // Sets the AED's current patient to the first patient in the "listOfPatients" list
 
@@ -37,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     connect(AED, SIGNAL(updateText(int)), this, SLOT (updateText(int)));
     connect(AED, SIGNAL(updateLCDImg(int)), this, SLOT (updateLCDImg(int)));
     connect(AED, SIGNAL(updatePatient(int)), this, SLOT (updatePatient(int)));
+    connect(AED, SIGNAL(selfTurnOff()), this, SLOT(handleTOSignal()));
 
 
     configurePatients();
@@ -114,6 +116,25 @@ void MainWindow::toggleTimer()
     }
 }
 
+void MainWindow::toggleIsOn(){
+    aedIsOn = !aedIsOn;
+    if(!aedIsOn){
+        ui->checkBox->setEnabled(true);
+        ui->checkBox_2->setEnabled(true);
+        ui->checkBox_3->setEnabled(true);
+        ui->checkBox_4->setEnabled(true);
+        ui->checkBox_5->setEnabled(true);
+    }
+    else{
+        ui->checkBox->setEnabled(false);
+        ui->checkBox_2->setEnabled(false);
+        ui->checkBox_3->setEnabled(false);
+        ui->checkBox_4->setEnabled(false);
+        ui->checkBox_5->setEnabled(false);
+    }
+}
+
+
 //Updates number of shocks in AED and on the ui by 1.
 void MainWindow::updateShocks()
 {
@@ -135,6 +156,7 @@ void MainWindow::updateProgressBar()
 
 
     if (newValue == 0) {
+        AED->setPower(false);
         timer->stop();
     }
 }
@@ -836,5 +858,47 @@ void MainWindow::on_pedPadBtn_clicked()
 {
     AED->setPadType(1);
     ui->adultPadBtn->setChecked(false );
+}
+
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+    AED->setECGSignalFunctional(ui->checkBox->isChecked());
+
+}
+
+
+void MainWindow::on_checkBox_2_stateChanged(int arg1)
+{
+    AED->setdefribilatorFunctional(ui->checkBox_2->isChecked());
+}
+
+
+void MainWindow::on_checkBox_3_stateChanged(int arg1)
+{
+    AED->setFAAEDPlusFunctional(ui->checkBox_3->isChecked());
+}
+
+
+void MainWindow::on_checkBox_4_stateChanged(int arg1)
+{
+    AED->setCPRMonitoringFunctional(ui->checkBox_4->isChecked());
+}
+
+
+void MainWindow::on_checkBox_5_stateChanged(int arg1)
+{
+
+    AED->setVPfunctional(ui->checkBox_5->isChecked());
+}
+
+
+void MainWindow::on_pwrBtn_clicked()
+{
+    toggleIsOn();
+}
+
+void MainWindow::handleTOSignal(){
+    ui->pwrBtn->click();
 }
 

@@ -85,7 +85,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/light2</pixmap>
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -107,7 +107,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/bkg</pixmap>
+     <pixmap resource="res.qrc">:/res/bkg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -129,7 +129,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/light2</pixmap>
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -151,7 +151,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/light2</pixmap>
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -173,7 +173,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/light2</pixmap>
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -195,7 +195,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/light2</pixmap>
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -217,7 +217,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/res/light2</pixmap>
+     <pixmap resource="res.qrc">:/res/light2</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -690,7 +690,7 @@ QProgressBar::chunk {
       <x>910</x>
       <y>420</y>
       <width>285</width>
-      <height>161</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -740,6 +740,111 @@ QProgressBar::chunk {
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>530</y>
+      <width>421</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>241</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>DejaVu Sans</family>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>POWER ON TESTING</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>161</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ECG signal functional</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>161</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Defibrilator functional</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>191</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Fully Automatic AED Plus</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>451</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CPR monitoring &amp; compression depth detection functional</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>181</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Voice Prompt functional</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>line</zorder>
    <zorder>pwrBtn</zorder>
    <zorder>NOKindicator</zorder>
@@ -755,6 +860,7 @@ QProgressBar::chunk {
    <zorder>LCD</zorder>
    <zorder>groupBox_2</zorder>
    <zorder>groupBox_3</zorder>
+   <zorder>groupBox_4</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -773,6 +879,17 @@ QProgressBar::chunk {
    </widget>
    <addaction name="menuAED"/>
   </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -782,7 +899,9 @@ QProgressBar::chunk {
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

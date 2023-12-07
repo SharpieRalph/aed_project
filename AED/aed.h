@@ -32,10 +32,15 @@ public:
     void setPadType(int);
     void setPatientShockable(bool);
     void setShowECG(bool);
+    void setECGSignalFunctional(bool);
+    void setdefribilatorFunctional(bool);
+    void setFAAEDPlusFunctional(bool);
+    void setCPRMonitoringFunctional(bool);
+    void setVPfunctional(bool);
 
     void updateShocks();
     void delay(int);
-    void POSelfTest();
+    bool POSelfTest();
     void beginProc(int); //Begins running AED procedure
     void incrTimeOn();
     void analysis();
@@ -47,6 +52,7 @@ signals:
     void updateText(int textNum);
     void updateLCDImg(int diag);
     void updatePatient(int newPatient);
+    void selfTurnOff();
 
 private:
     bool hasPower; //AED has power
@@ -61,6 +67,14 @@ private:
     int statusECG; //status of ECG
     bool showECG; //Is ECG plot being displayed
     patient *currPatient; //Object representing patient currently connected by the AED's pads
+
+    bool preConnectedPads;
+
+    bool ECGSignalFunctional;
+    bool defribilatorFunctional;
+    bool FAAEDPlusFunctional;  //Fully automatic AED plus
+    bool CPRMonitoringFunctional;
+    bool VPfunctional; //Voice prompt
 
 
 };

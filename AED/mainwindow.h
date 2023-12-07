@@ -35,10 +35,12 @@ private:
     QTimer* timer;
     QTimer* LCDTimer;
     QProgressBar* batteryBar ;
+    bool aedIsOn;
 
     void nokOn();
     void nokOff();
     void toggleTimer();
+    void toggleIsOn();
     void updateShocks();
     void updateProgressBar();
     void configurePatients();
@@ -46,7 +48,7 @@ private:
     void hideECG();
 
 private slots:
-
+    void handleTOSignal();
     void updatePatient(int newPatient);
     void updatePower(bool newPower);
     void toggleActiveCPR(bool newCPR);
@@ -61,5 +63,11 @@ private slots:
     void on_adequateCPRBtn_clicked(bool checked);
     void on_adultPadBtn_clicked();
     void on_pedPadBtn_clicked();
+    void on_checkBox_stateChanged(int arg1);
+    void on_checkBox_2_stateChanged(int arg1);
+    void on_checkBox_3_stateChanged(int arg1);
+    void on_checkBox_4_stateChanged(int arg1);
+    void on_checkBox_5_stateChanged(int arg1);
+    void on_pwrBtn_clicked();
 };
 #endif // MAINWINDOW_H
