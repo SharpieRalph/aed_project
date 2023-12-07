@@ -17,10 +17,11 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     listOfPatients = new patient[TOTAL_PATIENTS];   // Initializes listOfPatients
     AED->setPatient(&listOfPatients[0]);    // Sets the AED's current patient to the first patient in the "listOfPatients" list
 
-    timer = new QTimer(this);
+    timer = new QTimer(this);   // Battery timer
     LCDTimer = new QTimer(this);
     batteryBar = ui->batteryBar;
 
+    // Setting up signals/slots for the varius UI elements
     connect( ui->pwrBtn, &QPushButton::clicked, this, &MainWindow::toggleTimer);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateProgressBar);
     connect(LCDTimer, &QTimer::timeout, this, &MainWindow::updateLCDTimer);
@@ -39,9 +40,6 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
     connect(AED, SIGNAL(updateLCDImg(int)), this, SLOT (updateLCDImg(int)));
     connect(AED, SIGNAL(updatePatient(int)), this, SLOT (updatePatient(int)));
     connect(AED, SIGNAL(selfTurnOff()), this, SLOT(handleTOSignal()));
-
-
-    configurePatients();
 
     //Init ECG Plot and hide it.
     ui->ECG->setVisible(false);
@@ -64,6 +62,8 @@ MainWindow::MainWindow(QWidget *parent, patient *newPatients)
 
     //Seed random
     srand((unsigned) time(NULL));
+
+    configurePatients();
 }
 
 MainWindow::~MainWindow()
@@ -88,11 +88,8 @@ void MainWindow::nokOn()
 {
 
     if (AED->getOK()){
-        ui->NOKindicator->setTextColor("#72f542");
         ui->NOKindicator->setText("OK");
-
     }else {
-        ui->NOKindicator->setTextColor("#f71919");
         ui->NOKindicator->setText("NOT OK");
     }
 }
@@ -100,7 +97,6 @@ void MainWindow::nokOn()
 //Returns NOK Indicator to OFF
 void MainWindow::nokOff()
 {
-    ui->NOKindicator->setTextColor("#3d3d3d");
     ui->NOKindicator->setText("OFF");
 }
 
@@ -157,6 +153,7 @@ void MainWindow::updateProgressBar()
 
     if (newValue == 0) {
         AED->setPower(false);
+        updatePower(false);
         timer->stop();
     }
 }
@@ -229,12 +226,16 @@ void MainWindow::updatePower(bool newPower)
     // Power on, AED functionality begins
     if(newPower){
         LCDTimer->start(1000);
+        AED->resetNumShocks();
+        ui->shockCounter->setText(QString("0"));
         int stage = 0;  // Initial stage sent to "beginProc()"
         AED->setPower(true);
         nokOn();
         while(AED->getPower()) {
             if(stage != 0) {
-                lightOff(stage-1);
+                if(stage != 1) {
+                    lightOff(stage-1);
+                }
                 lightOn(stage);
             }
             AED->beginProc(stage);
@@ -257,6 +258,7 @@ void MainWindow::updatePower(bool newPower)
         LCDTimer->stop();
         AED->setTimeOn(0);
         toggleActiveECG(false);
+        ui->LCD_text->setText("");
         nokOff();
     }
 }
@@ -377,49 +379,54 @@ void MainWindow::lightOff(int lightNum)
 // Switch case that handles what the visual instructions say on the LCD
 void MainWindow::updateText(int textNum)
 {
-    switch(textNum){
-        case 0:
-            ui->LCD_text->setText("Stay Calm");
-            break;
-        case 1:
-            ui->LCD_text->setText("Check Reponsiveness");
-            break;
-        case 2:
-            ui->LCD_text->setText("Call For Help");
-            break;
-        case 3:
-            ui->LCD_text->setText("Attach Defib Pads To Patients Bare Chest");
-            break;
-        case 4:
-            ui->LCD_text->setText("Plug In Cable");
-            break;
-        case 5:
-            ui->LCD_text->setText("Check Electrode Pads");
-            break;
-        case 6:
-            ui->LCD_text->setText("Adult Pads");
-            break;
-        case 7:
-            ui->LCD_text->setText("Pediatric Pads");
-            break;
-        case 8:
-            ui->LCD_text->setText("Dont Touch Patient. Analyzing");
-            break;
-        case 9:
-          ui->LCD_text->setText("Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
-          AED->delay(3);
-          ui->LCD_text->setText("Shock Delivered.");
-          updateShocks();
-          break;
-        case 10:
-            ui->LCD_text->setText("Start CPR");
-            break;
-        case 11:
-            ui->LCD_text->setText("Push Harder");
-            break;
-        case 12:
-            ui->LCD_text->setText("Stop CPR");
-            break;
+    if(AED->getPower()) {
+        switch(textNum){
+            case 0:
+                ui->LCD_text->setText("Stay Calm");
+                break;
+            case 1:
+                ui->LCD_text->setText("Check Reponsiveness");
+                break;
+            case 2:
+                ui->LCD_text->setText("Call For Help");
+                break;
+            case 3:
+                ui->LCD_text->setText("Attach Defib Pads To Patients Bare Chest");
+                break;
+            case 4:
+                ui->LCD_text->setText("Plug In Cable");
+                break;
+            case 5:
+                ui->LCD_text->setText("Check Electrode Pads");
+                break;
+            case 6:
+                ui->LCD_text->setText("Adult Pads");
+                break;
+            case 7:
+                ui->LCD_text->setText("Pediatric Pads");
+                break;
+            case 8:
+                ui->LCD_text->setText("Dont Touch Patient. Analyzing");
+                break;
+            case 9:
+              ui->LCD_text->setText("Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
+              AED->delay(3);
+              if(AED->getPower()) {
+                  ui->LCD_text->setText("Shock Delivered.");
+                  qInfo("Audio Output: Shock Delivered.");
+                  updateShocks();
+              }
+              break;
+            case 10:
+                ui->LCD_text->setText("Start CPR");
+                break;
+            case 11:
+                ui->LCD_text->setText("Push Harder");
+                break;
+            case 12:
+                ui->LCD_text->setText("Stop CPR");
+                break;
+        }
     }
 }
 
@@ -861,32 +868,32 @@ void MainWindow::on_pedPadBtn_clicked()
 }
 
 
-void MainWindow::on_checkBox_stateChanged(int arg1)
+void MainWindow::on_checkBox_stateChanged()
 {
     AED->setECGSignalFunctional(ui->checkBox->isChecked());
 
 }
 
 
-void MainWindow::on_checkBox_2_stateChanged(int arg1)
+void MainWindow::on_checkBox_2_stateChanged()
 {
     AED->setdefribilatorFunctional(ui->checkBox_2->isChecked());
 }
 
 
-void MainWindow::on_checkBox_3_stateChanged(int arg1)
+void MainWindow::on_checkBox_3_stateChanged()
 {
     AED->setFAAEDPlusFunctional(ui->checkBox_3->isChecked());
 }
 
 
-void MainWindow::on_checkBox_4_stateChanged(int arg1)
+void MainWindow::on_checkBox_4_stateChanged()
 {
     AED->setCPRMonitoringFunctional(ui->checkBox_4->isChecked());
 }
 
 
-void MainWindow::on_checkBox_5_stateChanged(int arg1)
+void MainWindow::on_checkBox_5_stateChanged()
 {
 
     AED->setVPfunctional(ui->checkBox_5->isChecked());

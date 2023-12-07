@@ -160,11 +160,11 @@ void aed::delay(int s) {
 }
 bool aed::POSelfTest()
 {
-    // NEED TO IMPLEMENT
+
     qInfo("Administering self test");
     delay(1);
     if(!(ECGSignalFunctional & defribilatorFunctional & FAAEDPlusFunctional & CPRMonitoringFunctional &  VPfunctional)){
-        qInfo("AUdio output: Unit Failed Warning");
+        qInfo("Audio output: Unit Failed Warning");
         return false;
 
     }
@@ -202,38 +202,41 @@ void aed::beginProc(int i)
             emit(updateText(3));
             delay(2);
             while((getPadType() < 0 || !getPadPlacement()) && getPower()) {
-                if(getPadType() < 0) {
+                if(getPadType() < 0 && getPower()) {
                              qInfo("Audio Output: Plug In Cable.");
                              emit(updateText(4));
                              delay(2);
                 }
-                if(!getPadPlacement()) {
+                if(!getPadPlacement() && getPower()) {
                     qInfo("Audio Output: Check Electrode Pads");
                     emit(updateText(5));
                     delay(2);
                 }
             }
-            if(getPadType() == 0) {
-                qInfo("Audio Output: Adult Pads");
-                emit(updateText(6));
-                delay(2);
-            } else {
-                qInfo("Audio Output: Pediatric Pads");
-                emit(updateText(7));
-                delay(2);
+            if(getPower()) {
+                if(getPadType() == 0) {
+                    qInfo("Audio Output: Adult Pads");
+                    emit(updateText(6));
+                    delay(2);
+                } else {
+                    qInfo("Audio Output: Pediatric Pads");
+                    emit(updateText(7));
+                    delay(2);
+                }
             }
             break;
         case 4:
             qInfo("Audio Output: Dont Touch Patient. Analyzing");
             emit(updateText(8));
             delay(2);
-            analysis();
+            if(getPower()) {
+                analysis();
+            }
             break;
 
         case 5:
             qInfo("Audio Output: Stand Clear. Do Not Touch The Patient. Shock Will Be Delivered In Three..Two..One..");
             emit(updateText(9));
-            qInfo("Audio Output: Shock Delivered.");
             //Give 0 to 4 so 1 in 5 chances that patient returns to normal
             if(rand() % 5 == 0) {
                 qInfo("Patient has been resuscitated.");
@@ -290,4 +293,8 @@ void aed::analysis() {
         emit(updateLCDImg(3));
         emit(updateText(3));
     }
+}
+
+void aed::resetNumShocks() {
+    numShocks = 0;
 }

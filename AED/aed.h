@@ -44,6 +44,7 @@ public:
     void beginProc(int); //Begins running AED procedure
     void incrTimeOn();
     void analysis();
+    void resetNumShocks();
 
 signals:
 

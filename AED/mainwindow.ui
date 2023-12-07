@@ -46,29 +46,6 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="NOKindicator">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>20</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#5e5c64;&quot;&gt;OFF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="light1">
     <property name="enabled">
      <bool>false</bool>
@@ -745,8 +722,8 @@ QProgressBar::chunk {
      <rect>
       <x>910</x>
       <y>530</y>
-      <width>421</width>
-      <height>221</height>
+      <width>420</width>
+      <height>220</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -758,9 +735,9 @@ QProgressBar::chunk {
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>95</x>
        <y>10</y>
-       <width>241</width>
+       <width>230</width>
        <height>20</height>
       </rect>
      </property>
@@ -845,9 +822,38 @@ QProgressBar::chunk {
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="NOKindicator">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>20</y>
+      <width>90</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: black;
+color: #72f542;
+font-weight: bold;
+</string>
+    </property>
+    <property name="text">
+     <string>OFF</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>line</zorder>
    <zorder>pwrBtn</zorder>
-   <zorder>NOKindicator</zorder>
    <zorder>Loop</zorder>
    <zorder>light1</zorder>
    <zorder>light2</zorder>
@@ -861,6 +867,7 @@ QProgressBar::chunk {
    <zorder>groupBox_2</zorder>
    <zorder>groupBox_3</zorder>
    <zorder>groupBox_4</zorder>
+   <zorder>NOKindicator</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
