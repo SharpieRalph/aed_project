@@ -1,443 +1,150 @@
-<mxfile host="app.diagrams.net" modified="2023-12-03T22:58:06.691Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="Xi0KpD8ybFtRX0daPGi9" version="22.1.5" type="device">
+<mxfile host="app.diagrams.net" modified="2023-12-13T19:56:01.370Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="YDlKt44sFYu5sEnFQpZP" version="22.1.8" type="device">
   <diagram name="Page-1" id="GfTfgEt2AUB4qthJglIs">
-    <mxGraphModel dx="3240" dy="1153" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1195" dy="577" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;SEQUENCE DIAGRAM 1-2&lt;br&gt;&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="293" y="30" width="265" height="30" as="geometry" />
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;SEQUENCE DIAGRAM - UC 2&lt;br&gt;&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="282" y="30" width="287" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-2" value="Rescuer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-2" value="Rescuer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="20" y="60" width="19" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-5" value="Power Button" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-5" value="Power Button" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="60" y="90" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-6" value="AED Plus Device" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-6" value="AED Plus Device" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="130" y="90" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-7" value="Battery Usage Indicator" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-7" value="Battery Usage Indicator" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="210" y="90" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-8" value="Defib. Electrodes" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-8" value="Defib. Electrodes" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="310" y="90" width="70" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-9" value="ECG Signal/&lt;br&gt;Electronics" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-9" value="ECG Signal/&lt;br&gt;Electronics" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="400" y="90" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-10" value="Defib. Electronics" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-10" value="Defib. Electronics" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="500" y="90" width="70" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-11" value="Microprocessor&lt;br&gt;Electronics" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-11" value="Microprocessor&lt;br&gt;Electronics" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="590" y="90" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-12" value="CPR&lt;br&gt;Functionality" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-12" value="CPR&lt;br&gt;Functionality" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="690" y="90" width="70" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-13" value="Voice&lt;br&gt;Prompts" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-13" value="Voice&lt;br&gt;Prompts" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="780" y="90" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-26" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-60">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-26" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-60" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="30" y="480" as="sourcePoint" />
             <mxPoint x="29.16" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-27" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-27" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="85" y="970" as="sourcePoint" />
+            <mxPoint x="85" y="280" as="sourcePoint" />
             <mxPoint x="84.9" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-28" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-66">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-28" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-66" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="160" y="480" as="sourcePoint" />
             <mxPoint x="159.9" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-29" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-29" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="250" y="970" as="sourcePoint" />
+            <mxPoint x="250" y="280" as="sourcePoint" />
             <mxPoint x="249.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-30" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-30" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="345" y="970" as="sourcePoint" />
+            <mxPoint x="345" y="280" as="sourcePoint" />
             <mxPoint x="344.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-31" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-31" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="440" y="970" as="sourcePoint" />
+            <mxPoint x="440" y="280" as="sourcePoint" />
             <mxPoint x="439.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-32" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-32" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="535" y="970" as="sourcePoint" />
+            <mxPoint x="535" y="280" as="sourcePoint" />
             <mxPoint x="534.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-33" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-33" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="630" y="970" as="sourcePoint" />
+            <mxPoint x="630" y="280" as="sourcePoint" />
             <mxPoint x="629.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-34" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-34" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="725" y="970" as="sourcePoint" />
+            <mxPoint x="725" y="280" as="sourcePoint" />
             <mxPoint x="724.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-35" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-194">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-35" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="805" y="1120" as="sourcePoint" />
+            <mxPoint x="805" y="280" as="sourcePoint" />
             <mxPoint x="804.8" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-36" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-36" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="30" y="150" as="sourcePoint" />
             <mxPoint x="80" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-37" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Press&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-36">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-37" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Press&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="PyAHt-sVaRDBj9ZTM86Y-36" vertex="1" connectable="0">
           <mxGeometry x="-0.091" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-38" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-63" target="PyAHt-sVaRDBj9ZTM86Y-66">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-38" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="PyAHt-sVaRDBj9ZTM86Y-63" target="PyAHt-sVaRDBj9ZTM86Y-66" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="90" y="170" as="sourcePoint" />
             <mxPoint x="160" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-61" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-60">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-61" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-60" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="30" y="970" as="sourcePoint" />
+            <mxPoint x="30" y="280" as="sourcePoint" />
             <mxPoint x="29.16" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-60" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="24.5" y="150" width="10" height="790" as="geometry" />
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-60" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="24.5" y="140" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-64" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-63">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-64" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-63" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="90" y="170" as="sourcePoint" />
             <mxPoint x="160" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-65" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Powers&lt;br&gt;On&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-64">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-65" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Powers&lt;br&gt;On&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="PyAHt-sVaRDBj9ZTM86Y-64" vertex="1" connectable="0">
           <mxGeometry x="-0.091" y="1" relative="1" as="geometry">
             <mxPoint x="30" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-63" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-63" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="80" y="160" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-67" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-66">
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-67" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-66" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="160" y="970" as="sourcePoint" />
+            <mxPoint x="160" y="280" as="sourcePoint" />
             <mxPoint x="159.9" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-66" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="155" y="170" width="10" height="770" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-83" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-186">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="180" as="sourcePoint" />
-            <mxPoint x="240" y="180" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-84" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Verifies &lt;br&gt;Capacity&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-83">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-85" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if-condition&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="-50" y="200" width="260" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-86" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[If Battery&lt;br&gt;Low]&lt;br&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-33" y="236" width="40" height="34" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-91" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.052;exitY=0.06;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.041;entryY=0.079;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-60">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="154.99999999999997" y="224.39999999999998" as="sourcePoint" />
-            <mxPoint x="40" y="225" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-93" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;A/V Output:&lt;br&gt;&lt;i&gt;&quot;Change Batteries&quot;&lt;/i&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-91">
-          <mxGeometry x="-0.0258" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-97" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Display&lt;br&gt;Red X&amp;nbsp;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;entryX=1.1;entryY=0.353;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry x="-0.8868" y="-4" relative="1" as="geometry">
-            <mxPoint x="165" y="236" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="236" />
-              <mxPoint x="195" y="265" />
-            </Array>
-            <mxPoint x="166" y="265.31000000000006" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-100" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="299.8" as="sourcePoint" />
-            <mxPoint x="340" y="300" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-101" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Verifies&lt;br&gt;Connection&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-100">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-102" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if-condition&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="-50" y="320" width="260" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-105" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[If Poor&lt;br&gt;Connection]&lt;/font&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-37.75" y="357" width="49.5" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-107" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.024;exitY=0.185;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.994;entryY=0.242;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="155" y="340" as="sourcePoint" />
-            <mxPoint x="34" y="340" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-108" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;A/V Output:&lt;br&gt;&lt;i&gt;&quot;Plug In Pads&quot;&lt;/i&gt;&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-107">
-          <mxGeometry x="-0.0258" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-109" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Display&lt;br&gt;Red X&amp;nbsp;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" parent="1">
-          <mxGeometry x="-0.8868" y="-4" relative="1" as="geometry">
-            <mxPoint x="165" y="346" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="346" />
-              <mxPoint x="195" y="370" />
-              <mxPoint x="166" y="370" />
-            </Array>
-            <mxPoint x="166" y="370" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-113" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-189">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="404.66" as="sourcePoint" />
-            <mxPoint x="440" y="405" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-114" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Verifies&lt;br&gt;Functionality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-113">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-115" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if-condition&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="420" width="110" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-116" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[If Not&lt;br&gt;Functional]&lt;br&gt;&lt;/span&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="105" y="455" width="43.5" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-117" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Display&lt;br&gt;Red X&amp;nbsp;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" parent="1">
-          <mxGeometry x="-0.8868" y="-4" relative="1" as="geometry">
-            <mxPoint x="165" y="450" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="450" />
-              <mxPoint x="195" y="474" />
-              <mxPoint x="166" y="474" />
-            </Array>
-            <mxPoint x="166" y="474" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-124" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="502.76" as="sourcePoint" />
-            <mxPoint x="530" y="503" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-125" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Verifies&lt;br&gt;Functionality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-124">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-126" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if-condition&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="520" width="120" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-127" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[If Not&lt;br&gt;Functional]&lt;br&gt;&lt;/span&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="105" y="555" width="43.5" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-128" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Display&lt;br&gt;Red X&amp;nbsp;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" parent="1">
-          <mxGeometry x="-0.8868" y="-4" relative="1" as="geometry">
-            <mxPoint x="165" y="550" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="550" />
-              <mxPoint x="195" y="574" />
-              <mxPoint x="166" y="574" />
-            </Array>
-            <mxPoint x="166" y="574" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-135" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.048;entryY=0.418;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-191">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="609.66" as="sourcePoint" />
-            <mxPoint x="630" y="610" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-136" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Verifies&lt;br&gt;Functionality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-135">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-138" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if-condition&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="620" width="110" height="79" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-139" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[If Not&lt;br&gt;Functional]&lt;br&gt;&lt;/span&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="105" y="659" width="43.5" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-140" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Display&lt;br&gt;Red X&amp;nbsp;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" parent="1">
-          <mxGeometry x="-0.8868" y="-4" relative="1" as="geometry">
-            <mxPoint x="165" y="650" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="650" />
-              <mxPoint x="195" y="674" />
-              <mxPoint x="166" y="674" />
-            </Array>
-            <mxPoint x="166" y="674" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-146" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="709.66" as="sourcePoint" />
-            <mxPoint x="720" y="710" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-147" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Verifies&lt;br&gt;Functionality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-146">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-148" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if-condition&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="720" width="110" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-149" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[If Not&lt;br&gt;Functional]&lt;br&gt;&lt;/span&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="105" y="755" width="43.5" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-150" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Display&lt;br&gt;Red X&amp;nbsp;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" parent="1">
-          <mxGeometry x="-0.8868" y="-4" relative="1" as="geometry">
-            <mxPoint x="165" y="750" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="750" />
-              <mxPoint x="195" y="774" />
-              <mxPoint x="166" y="774" />
-            </Array>
-            <mxPoint x="166" y="774" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-156" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="165" y="799.66" as="sourcePoint" />
-            <mxPoint x="800" y="800" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-157" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Verifies&lt;br&gt;Functionality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-156">
-          <mxGeometry x="-0.04" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-172" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;alternative&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="-50" y="810" width="280" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-173" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[If Red &quot;X&quot; in Window]&lt;br&gt;&lt;/span&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-37.75" y="845" width="43.5" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-179" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;[else]&lt;/font&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-32.5" y="892" width="33" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-180" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1.002;entryY=0.498;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.007;exitY=0.497;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-172" source="PyAHt-sVaRDBj9ZTM86Y-172">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-50" y="1040" as="sourcePoint" />
-            <mxPoint x="742" y="1044" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-181" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.024;exitY=0.185;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.994;entryY=0.242;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="155.5" y="899.9200000000001" as="sourcePoint" />
-            <mxPoint x="34.5" y="899.9200000000001" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-182" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;A/V Output:&lt;br&gt;&lt;i&gt;&quot;Unit Ok&quot;&lt;/i&gt;&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-181">
-          <mxGeometry x="-0.0258" y="-1" relative="1" as="geometry">
-            <mxPoint x="-4" y="2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-183" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Display&lt;br&gt;Green &lt;br&gt;Check Mark&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" parent="1">
-          <mxGeometry x="-0.6386" y="-10" relative="1" as="geometry">
-            <mxPoint x="165" y="910" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="195" y="910" />
-              <mxPoint x="195" y="934" />
-              <mxPoint x="166" y="934" />
-            </Array>
-            <mxPoint x="166" y="934" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-184" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.024;exitY=0.185;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.994;entryY=0.242;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="155.5" y="940" as="sourcePoint" />
-            <mxPoint x="34.5" y="940" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-185" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Approve Use&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-184">
-          <mxGeometry x="-0.0258" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-186" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="245" y="170" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-188" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="289" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-189" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="435" y="395" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-190" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="530" y="493" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-191" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="625" y="602" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-193" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="720" y="702" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-195" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="PyAHt-sVaRDBj9ZTM86Y-194">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="805" y="970" as="sourcePoint" />
-            <mxPoint x="804.8" y="120" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-194" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="800" y="792" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-197" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.024;exitY=0.185;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.994;entryY=0.242;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="155.5" y="840.0000000000001" as="sourcePoint" />
-            <mxPoint x="34.5" y="840.0000000000001" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-198" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;A/V Output:&lt;br&gt;&lt;i&gt;&quot;Unit Failed&quot;&lt;/i&gt;&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PyAHt-sVaRDBj9ZTM86Y-197">
-          <mxGeometry x="-0.0258" y="-1" relative="1" as="geometry">
-            <mxPoint x="-4" y="2" as="offset" />
-          </mxGeometry>
+        <mxCell id="PyAHt-sVaRDBj9ZTM86Y-66" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="155" y="160" width="10" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
